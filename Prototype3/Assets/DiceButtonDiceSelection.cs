@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class DiceButtonDiceSelection : MonoBehaviour
 {
-    string _myDiceName;
+    string _myDiceName = "Common";
 
     // Start is called before the first frame update
     void Start()
     {
-       // _myDiceName = null;
+        //_myDiceName = "Common";
     }
 
     // Update is called once per frame
@@ -41,12 +41,13 @@ public class DiceButtonDiceSelection : MonoBehaviour
 
     public void ShowPopupInfo()
     {
-        if (_myDiceName != null)
+        if (_myDiceName != null && FindDiceSkin(_myDiceName) != null)
         {
 
             DiceSkin dS = FindDiceSkin(_myDiceName);
-
             GameObject.Find("PopupCanvas").GetComponent<PopupCanvasDiceSelection>().Popup(dS.GetDiceInfoTitle(), dS.GetDiceInfoBody());
+
+            Debug.Log("MY DICE NAME: " + _myDiceName);
         } else if (this.gameObject.name.Contains("DefaultDice"))
         {
             GameObject.Find("PopupCanvas").GetComponent<PopupCanvasDiceSelection>().Popup("Default Dice", "Dice for scrubs");
@@ -74,5 +75,15 @@ public class DiceButtonDiceSelection : MonoBehaviour
         }
 
         return newDiceSkin;
+    }
+
+    public void SwitchDice()
+    {
+        GameObject currDice = DiceIndicatorDiceSelection.GetSelectedDice();
+        currDice.GetComponent<Image>().sprite = FindDiceSkin(_myDiceName).GetDiceImage();
+
+        int diceNum = int.Parse(currDice.gameObject.name.Substring(currDice.gameObject.name.Length - 1));
+
+        PlayerDiceHolder.ChangeDice(1, _myDiceName);
     }
 }

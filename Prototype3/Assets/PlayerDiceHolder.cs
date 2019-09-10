@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerDiceHolder : MonoBehaviour
 {
 
-    private string dice1;
-    private string dice2;
-    private string dice3;
+    private static string dice1;
+    private static string dice2;
+    private static string dice3;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class PlayerDiceHolder : MonoBehaviour
         
     }
 
-    public List<string> GetDiceList()
+    public static List<string> GetDiceList()
     {
         List<string> diceList = new List<string>();
 
@@ -36,7 +36,7 @@ public class PlayerDiceHolder : MonoBehaviour
         return diceList;
     }
 
-    public void ChangeDice(int diceNum, string name)
+    public static void ChangeDice(int diceNum, string name)
     {
         switch (diceNum)
         {

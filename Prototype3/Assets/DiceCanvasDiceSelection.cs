@@ -10,9 +10,14 @@ public class DiceCanvasDiceSelection : MonoBehaviour
     public Sprite unlockImage;
     public float buttonGap;
 
+    private Vector3 _buttonPos;
+
     // Start is called before the first frame update
     void Start()
     {
+        GameObject baseButton = this.transform.GetChild(0).gameObject;
+        _buttonPos = baseButton.GetComponent<RectTransform>().position;
+        Destroy(baseButton);
         Hide();
     }
 
@@ -30,8 +35,6 @@ public class DiceCanvasDiceSelection : MonoBehaviour
         CharacterDiceProfile currCDP = FindCharacterDiceProfile(characterName);
 
         //Getting starting position of button
-        GameObject baseButton = this.transform.GetChild(0).gameObject;
-        Vector3 buttonPos = baseButton.GetComponent<RectTransform>().position;
 
         for (int i = 0; i < this.transform.childCount; i++)
         {
@@ -40,6 +43,8 @@ public class DiceCanvasDiceSelection : MonoBehaviour
                 Destroy(this.transform.GetChild(i).gameObject);
             }
         }
+
+        Vector3 tempButtonPos = _buttonPos;
 
         //Get Level
         int level = currRelationship.GetCurrLevel();
@@ -51,15 +56,15 @@ public class DiceCanvasDiceSelection : MonoBehaviour
             if (level >= currCDP.GetUnlockLevels()[i])
             {
                 DiceSkin newDiceSkin = FindDiceSkin(currCDP.GetDiceTypes()[i]);
-                MakeButton(buttonPos, newDiceSkin);
+                MakeButton(tempButtonPos, newDiceSkin);
             }
             else
             {
-                MakeLockedButton(buttonPos, currCDP.GetUnlockLevels()[i]);
+                MakeLockedButton(tempButtonPos, currCDP.GetUnlockLevels()[i]);
             }
 
             //Increase the gap between buttons
-            buttonPos.y -= buttonGap;
+            tempButtonPos.y -= buttonGap;
         }
 
         //Change the character image
