@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,11 +12,14 @@ public class Relationship : MonoBehaviour
     private int _currLevel;
     private float _currProgressToNextLevel;
 
+    private bool _discovered;
+
     // Start is called before the first frame update
     void Start()
     {
-        _currLevel = 7;
+        _currLevel = 1;
         _currProgressToNextLevel = startingProgressToNextLevel;
+        _discovered = false;
     }
 
     // Update is called once per frame
@@ -57,4 +61,15 @@ public class Relationship : MonoBehaviour
     {
         _currProgressToNextLevel = newProgress;
     }
+
+    public void SetDiscovered()
+    {
+        _discovered = true;
+    }
+
+    public bool HasBeenDiscovered()
+    {
+        return _discovered;
+    }
+
 }

@@ -67,10 +67,15 @@ public class DiceCanvasDiceSelection : MonoBehaviour
             tempButtonPos.y -= buttonGap;
         }
 
-        //Change the character image
-
+        //Get the objects that aren't destroyed on reset
         GameObject dontClear = Utilities.SearchChild("DontClear", this.gameObject);
+
+        //Change the character image
         Utilities.SearchChild("CharacterImage", dontClear).GetComponent<Image>().sprite = currCDP.GetCharacterImage();
+
+        //Change superficial info
+        Utilities.SearchChild("CharactersDice", dontClear).GetComponent<Text>().text = currCDP.GetCharacterName()+"'s Dice (Relationship Lvl: "+ currRelationship.GetCurrLevel()+")";
+
     }
 
     public void MakeButton(Vector3 position, DiceSkin dS)

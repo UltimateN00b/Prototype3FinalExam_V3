@@ -112,4 +112,14 @@ public class MainText : MonoBehaviour
     {
         goToConsecutiveNodeOnClick = go;
     }
+
+    public void SetCurrentRelationship(string characterName)
+    {
+        GameObject.Find("RelationshipCanvas").GetComponent<RelationshipCanvas>().SetCurrRelationship(characterName);
+    }
+
+    public void UpdateCurrentRelationship(float changeNum)
+    {
+        GameObject.Find("RelationshipCanvas").GetComponent<RelationshipCanvas>().UpdateRelationship(changeNum);
+    }
 }

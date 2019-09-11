@@ -13,24 +13,27 @@ public class RelationshipCanvas : MonoBehaviour
 
     private bool _increaseBar;
     private float _reachAmount;
+    private bool _changeAmountIsPositive;
 
     private bool _startWaitBeforeFadeTimer;
     private float _fadeTimer;
 
+    private int _levelStringLength;
+    private bool _hasUpdatedLevelStringLength;
+
     // Start is called before the first frame update
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        _levelStringLength = 1;
+        _hasUpdatedLevelStringLength = false;
     }
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         _currRelationship = null;
         _increaseBar = false;
 
-        for (int i = 0; i < this.transform.childCount; i++)
-        {
-            this.transform.GetChild(i).GetComponent<MyUIFade>().FadeOut();
-        }
+        Hide();
 
         _fadeTimer = 0.0f;
     }
@@ -41,7 +44,7 @@ public class RelationshipCanvas : MonoBehaviour
         if (_increaseBar && this.transform.GetChild(0).GetComponent<Image>().color.a >= 1)
         {
             GameObject relationshipBar = Utilities.SearchChild("RelationshipBar", this.gameObject);
-            if (relationshipBar.GetComponent<Image>().fillAmount < _reachAmount)
+            if (relationshipBar.GetComponent<Image>().fillAmount < _reachAmount && _changeAmountIsPositive)
             {
 
                     relationshipBar.GetComponent<Image>().fillAmount += barFillAmount*Time.deltaTime;
@@ -52,6 +55,19 @@ public class RelationshipCanvas : MonoBehaviour
                     {
                         UpdateLevel();
                         _reachAmount -= 1;
+                    }
+                }
+            } else if (relationshipBar.GetComponent<Image>().fillAmount > _reachAmount && !_changeAmountIsPositive)
+            {
+
+                relationshipBar.GetComponent<Image>().fillAmount -= barFillAmount * Time.deltaTime;
+
+                if (_reachAmount <= 0)
+                {
+                    if (relationshipBar.GetComponent<Image>().fillAmount >= 1 || relationshipBar.GetComponent<Image>().fillAmount <= 0)
+                    {
+                        UpdateLevel();
+                        _reachAmount += 1;
                     }
                 }
             }
@@ -87,10 +103,7 @@ public class RelationshipCanvas : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < this.transform.childCount; i++)
-                {
-                    this.transform.GetChild(i).GetComponent<MyUIFade>().FadeOut();
-                }
+                Hide();
 
                 _fadeTimer = 0.0f;
                 _startWaitBeforeFadeTimer = false;
@@ -109,6 +122,8 @@ public class RelationshipCanvas : MonoBehaviour
                 _currRelationship = r;
             }
         }
+
+        _currRelationship.SetDiscovered();
     }
 
     public void UpdateRelationship(float changeAmount)
@@ -127,12 +142,21 @@ public class RelationshipCanvas : MonoBehaviour
             //ShowRelationship
             for (int i = 0; i < this.transform.childCount; i++)
             {
-                this.transform.GetChild(i).GetComponent<MyUIFade>().FadeIn();
+                Show();
             }
 
             //Change bar level on display
             GameObject relationshipBar = Utilities.SearchChild("RelationshipBar", this.gameObject);
             _reachAmount = relationshipBar.GetComponent<Image>().fillAmount + changeAmount;
+
+            if (changeAmount > 0)
+            {
+                _changeAmountIsPositive = true;
+            } else
+            {
+                _changeAmountIsPositive = false;
+            }
+
             _increaseBar = true;
         }
     }
@@ -142,7 +166,20 @@ public class RelationshipCanvas : MonoBehaviour
         GameObject relationshipBar = Utilities.SearchChild("RelationshipBar", this.gameObject);
 
         string levelString = Utilities.SearchChild("Level", this.gameObject).GetComponent<Text>().text;
-        levelString = levelString.Substring(levelString.Length - 1);
+
+        if (int.Parse(levelString.Substring(levelString.Length - 1)) == 0)
+        {
+            if (!_hasUpdatedLevelStringLength)
+            {
+                _levelStringLength += 1;
+                _hasUpdatedLevelStringLength = true;
+            }
+        } else
+        {
+            _hasUpdatedLevelStringLength = false;
+        }
+
+        levelString = levelString.Substring(levelString.Length - _levelStringLength);
 
         int level = int.Parse(levelString);
 
@@ -158,5 +195,29 @@ public class RelationshipCanvas : MonoBehaviour
         }
 
         Utilities.SearchChild("Level", this.gameObject).GetComponent<Text>().text = "Lvl: " + level.ToString();
+    }
+
+    private void Hide()
+    {
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            this.transform.GetChild(i).GetComponent<MyUIFade>().FadeOut();
+            if (this.transform.GetChild(i).name.Contains("RelationshipBar"))
+            {
+                this.transform.GetChild(i).transform.GetChild(0).GetComponent<MyUIFade>().FadeOut();
+            }
+        }
+    }
+
+    private void Show()
+    {
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            this.transform.GetChild(i).GetComponent<MyUIFade>().FadeIn();
+            if (this.transform.GetChild(i).name.Contains("RelationshipBar"))
+            {
+                this.transform.GetChild(i).transform.GetChild(0).GetComponent<MyUIFade>().FadeIn();
+            }
+        }
     }
 }

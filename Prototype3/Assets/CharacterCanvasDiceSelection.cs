@@ -19,8 +19,11 @@ public class CharacterCanvasDiceSelection : MonoBehaviour
 
         foreach (Relationship r in relationshipHolder.GetComponents<Relationship>())
         {
-            MakeButton(buttonPos, r);
-            buttonPos.y -= buttonGap;
+            if (r.HasBeenDiscovered())
+            {
+                MakeButton(buttonPos, r);
+                buttonPos.y -= buttonGap;
+            }
         }
     }
 

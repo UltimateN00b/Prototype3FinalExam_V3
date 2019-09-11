@@ -84,6 +84,6 @@ public class DiceButtonDiceSelection : MonoBehaviour
 
         int diceNum = int.Parse(currDice.gameObject.name.Substring(currDice.gameObject.name.Length - 1));
 
-        PlayerDiceHolder.ChangeDice(1, _myDiceName);
+        PlayerDiceHolder.ChangeDice(diceNum, _myDiceName);
     }
 }

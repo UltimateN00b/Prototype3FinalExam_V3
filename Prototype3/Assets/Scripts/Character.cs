@@ -26,7 +26,14 @@ public class Character : MonoBehaviour
 
     private bool _diceChanged;
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        dice1Type = PlayerDiceHolder.GetDiceType(1);
+        dice2Type = PlayerDiceHolder.GetDiceType(2);
+        dice3Type = PlayerDiceHolder.GetDiceType(3);
+    }
+
     void Start()
     {
         _hadTurn = false;
