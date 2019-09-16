@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NegativeEvent : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class NegativeEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneManager.GetActiveScene().name.Contains("Combat"))
+        {
+            Destroy(this.gameObject);
+        }
+
         _triggered = false;
         DontDestroyOnLoad(this.gameObject);
     }

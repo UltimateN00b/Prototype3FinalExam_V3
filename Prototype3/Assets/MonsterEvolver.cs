@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class MonsterEvolver : MonoBehaviour
 {
-    public List<Sprite> evolutions;
 
     private int _evolutionIndex;
+    private GameObject _currEvolution;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject evolutionHolder = GameObject.Find("EvolutionHolder");
         _evolutionIndex = 0;
+        _currEvolution = evolutionHolder.transform.GetChild(_evolutionIndex).gameObject;
     }
 
     // Update is called once per frame
@@ -22,8 +24,18 @@ public class MonsterEvolver : MonoBehaviour
 
     public void Evolve()
     {
-        this.GetComponent<SpriteRenderer>().sprite = evolutions[_evolutionIndex];
+
+        this.GetComponent<SpriteRenderer>().sprite = _currEvolution.GetComponent<Evolution>().enemySprite;
         AudioManager.PlaySound(Resources.Load("Heartbeat") as AudioClip);
         _evolutionIndex++;
+
+        GameObject evolutionHolder = GameObject.Find("EvolutionHolder");
+        _currEvolution = evolutionHolder.transform.GetChild(_evolutionIndex).gameObject;
+    }
+
+    public void FinaliseEvolution()
+    {
+        GameObject evolutionHolder = GameObject.Find("EvolutionHolder");
+        evolutionHolder.GetComponent<EvolutionHolder>().FinaliseEvolution(_currEvolution);
     }
 }

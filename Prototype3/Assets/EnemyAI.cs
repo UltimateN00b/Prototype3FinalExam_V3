@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -15,6 +16,20 @@ public class EnemyAI : MonoBehaviour
     private float _timer;
 
     private bool _firstRollTaken;
+
+    private void Awake()
+    {
+        if (SceneManager.GetActiveScene().name.Contains("Combat") && this.gameObject.tag.Contains("Enemy"))
+        {
+            GameObject evolution = GameObject.Find("EvolutionHolder").transform.GetChild(0).gameObject;
+
+            this.GetComponent<SpriteRenderer>().sprite = evolution.GetComponent<Evolution>().enemySprite;
+            this.GetComponent<Character>().ChangeCharacter(evolution.GetComponent<Character>());
+            this.GetComponent<EnemyAI>().ChangeEnemyAI(evolution.GetComponent<EnemyAI>());
+
+            Destroy(evolution.gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -89,5 +104,11 @@ public class EnemyAI : MonoBehaviour
         _timer = 0f;
         _startTimer = false;
         _firstRollTaken = false;
+    }
+
+    public void ChangeEnemyAI(EnemyAI newEnemyAI)
+    {
+        timeBetweenDiceRolls = newEnemyAI.timeBetweenDiceRolls;
+        percentageChanceOfAttack = newEnemyAI.percentageChanceOfAttack;
     }
 }

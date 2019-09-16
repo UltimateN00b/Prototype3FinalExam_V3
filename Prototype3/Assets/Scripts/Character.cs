@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
@@ -29,9 +30,13 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        dice1Type = PlayerDiceHolder.GetDiceType(1);
-        dice2Type = PlayerDiceHolder.GetDiceType(2);
-        dice3Type = PlayerDiceHolder.GetDiceType(3);
+
+            if (this.gameObject.tag.Equals("Player"))
+            {
+                dice1Type = PlayerDiceHolder.GetDiceType(1);
+                dice2Type = PlayerDiceHolder.GetDiceType(2);
+                dice3Type = PlayerDiceHolder.GetDiceType(3);
+            }
     }
 
     void Start()
@@ -207,5 +212,16 @@ public class Character : MonoBehaviour
         GameObject poison = Utilities.SearchChild("PoisonImage", poisonCanvas);
 
         poison.GetComponent<Poison>().DealPoisonDamage();
+    }
+
+    public void ChangeCharacter(Character newCharacter)
+    {
+        myName = newCharacter.myName;
+        characterImage = newCharacter.characterImage;
+        initiative = newCharacter.initiative;
+        hp = newCharacter.hp;
+        dice1Type = newCharacter.dice1Type;
+        dice2Type = newCharacter.dice2Type;
+        dice3Type = newCharacter.dice3Type;
     }
 }
