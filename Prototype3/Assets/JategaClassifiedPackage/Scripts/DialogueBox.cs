@@ -37,9 +37,13 @@ public class DialogueBox : MonoBehaviour
 
     private bool _textFullyDisplayed;
 
+    private bool _havingEpisode;
+
     // Use this for initialization
     void Start()
     {
+        _havingEpisode = false;
+
         _clickCounter = 2;
         _typeTimer = 0;
         _charNum = 0;
@@ -228,6 +232,18 @@ public class DialogueBox : MonoBehaviour
 
             if (currSpeakingCharacter.Equals("Kat") || currSpeakingCharacter.Equals("?")|| GameObject.Find(currNode.GetCurrCharacter()) != null || currSpeakingCharacter == "Narrator")
             {
+                if (GameObject.Find("EpisodeCanvas") != null)
+                {
+                    if (!_havingEpisode)
+                    {
+                        GameObject.Find("EpisodeCanvas").GetComponent<EpisodeCanvas>().StopEpisodeEffect();
+                    }
+                    else
+                    {
+                        GameObject.Find("EpisodeCanvas").GetComponent<EpisodeCanvas>().PlayEpisodeEffect();
+                    }
+                }
+
                 Show();
                 currNode.InvokeOnShownEvent();
             } else
@@ -236,12 +252,16 @@ public class DialogueBox : MonoBehaviour
                 print("!!!SPEAKING CHARACTER IS NOT IN THE SCENE");
             }
 
-            if (currSpeakingCharacter.Equals("Ayanda"))
+            if (GameObject.Find("AyandaImage") != null)
             {
-                GameObject.Find("AyandaImage").GetComponent<Image>().enabled = true;
-            } else
-            {
-                GameObject.Find("AyandaImage").GetComponent<Image>().enabled = false;
+                if (currSpeakingCharacter.Equals("Ayanda"))
+                {
+                    GameObject.Find("AyandaImage").GetComponent<Image>().enabled = true;
+                }
+                else
+                {
+                    GameObject.Find("AyandaImage").GetComponent<Image>().enabled = false;
+                }
             }
 
                 if (currNode.HasChoice())
@@ -531,5 +551,29 @@ public class DialogueBox : MonoBehaviour
     public List<Sprite> GetChoiceIcons()
     {
         return choiceIcons;
+    }
+
+    public void TriggerEpisode(string nE)
+    {
+       GameObject.Find("EpisodeCanvas").GetComponent<EpisodeCanvas>().PlayEpisodeEffect();
+        _havingEpisode = true;
+
+        SetNegativeEventTriggered(nE);
+    }
+
+    public void EndEpisode()
+    {
+        _havingEpisode = false;
+    }
+
+    public void SetNegativeEventTriggered(string negativeEvent)
+    {
+        GameObject nge = GameObject.FindGameObjectWithTag("NegativeEventHolder");
+        nge.GetComponent<NegativeEventHolder>().SearchNegativeEvents(negativeEvent).SetTriggered();
+    }
+
+    public void GoToNextNegativeEvent()
+    {
+        GameObject.FindGameObjectWithTag("NegativeEventHolder").GetComponent<NegativeEventHolder>().GoToNextNEDialogue();
     }
 }

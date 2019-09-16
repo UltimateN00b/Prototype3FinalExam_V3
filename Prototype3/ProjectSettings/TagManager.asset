@@ -7,6 +7,15 @@ TagManager:
   - Companion
   - Enemy
   - TypeTotal
+  - Slot
+  - Main
+  - Room
+  - FileTab
+  - ChatObject
+  - Choice
+  - Chatbot
+  - AudioManager
+  - NegativeEventHolder
   layers:
   - Default
   - TransparentFX
