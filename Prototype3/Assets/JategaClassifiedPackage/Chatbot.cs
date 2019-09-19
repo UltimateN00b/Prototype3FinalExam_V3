@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Chatbot : MonoBehaviour {
 
@@ -91,19 +92,37 @@ public class Chatbot : MonoBehaviour {
 
     public void ChangeExpression(string expression)
     {
-        Sprite changeSprite = this.GetComponent<SpriteRenderer>().sprite;
+        Sprite changeSprite = null;
+
+        if (this.GetComponent<SpriteRenderer>() != null)
+        {
+            changeSprite = this.GetComponent<SpriteRenderer>().sprite;
+        }
+
+        if (this.GetComponent<Image>()!=null)
+        {
+            changeSprite = this.GetComponent<Image>().sprite;
+        }
 
         foreach (Sprite s in myExpressions)
         {
-            string expressionName = s.name.Substring(s.name.IndexOf("_")+1);
+            string expressionName = s.name;
 
-            if (expressionName.ToUpper().Equals(expression.ToUpper()))
+            if (expressionName.ToUpper().Contains(expression.ToUpper()))
             {
                 changeSprite = s;
             }
         }
 
-        this.GetComponent<SpriteRenderer>().sprite = changeSprite;
+        if (this.GetComponent<SpriteRenderer>() != null)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = changeSprite;
+        }
+
+        if (this.GetComponent<Image>() != null)
+        {
+            this.GetComponent<Image>().sprite = changeSprite;
+        }
     }
 
     public static bool CheckAnyShowing()
