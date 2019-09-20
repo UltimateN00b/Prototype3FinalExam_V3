@@ -36,11 +36,24 @@ public class Chatbot : MonoBehaviour {
     void Update () {
         if (!_finishedHiding)
         {
-            if (this.GetComponent<SpriteRenderer>().color.a <= 0)
+            if (this.GetComponent<SpriteRenderer>() != null)
             {
-                ChangeExpression("Default");
-                CheckAllAlone();
-                _finishedHiding = true;
+                if (this.GetComponent<SpriteRenderer>().color.a <= 0)
+                {
+                    ChangeExpression("Default");
+                    CheckAllAlone();
+                    _finishedHiding = true;
+                }
+            }
+
+            if (this.GetComponent<Image>() != null)
+            {
+                if (this.GetComponent<Image>().color.a <= 0)
+                {
+                    ChangeExpression("Default");
+                    CheckAllAlone();
+                    _finishedHiding = true;
+                }
             }
         }
 	}
