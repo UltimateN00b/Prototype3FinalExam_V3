@@ -2726,7 +2726,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ASK LANA ABOUT HERSELF
+  m_Text: ASK LANA ABOUT HERSELF (INCREASE RELATIONSHIP WITH LANA)
 --- !u!222 &114526730
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5901,7 +5901,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'SIT BY THE STAIRS
+  m_Text: 'SIT BY THE STAIRS (DECREASE SLEEP METER)
 
 '
 --- !u!222 &224318005
@@ -7426,7 +7426,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: FIND A SEAT
+  m_Text: FIND A SEAT (DECREASE SLEEP METER AT END OF CONFRONTATION WITH NTANDO)
 --- !u!222 &259787896
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30687,7 +30687,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Nonsense! Come sit over here with Joey and I.
+  m_Text: Nonsense! Come sit over here with Joey and I. (INCREASE SLEEP METER)
 --- !u!222 &1142925927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37535,7 +37535,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: TALK ABOUT YOURSELF
+  m_Text: TALK ABOUT YOURSELF (iNCREASE SLEEP METER)
 --- !u!222 &1413164652
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53161,7 +53161,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ASK JOEY ABOUT HIMSELF
+  m_Text: ASK JOEY ABOUT HIMSELF (INCREASE RELATIONSHIP WITH JOEY)
 --- !u!222 &2016867228
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -54407,7 +54407,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: I hope so.
+  m_Text: I hope so. (INCREASE SLEEP METER)
 --- !u!222 &2064583743
 CanvasRenderer:
   m_ObjectHideFlags: 0

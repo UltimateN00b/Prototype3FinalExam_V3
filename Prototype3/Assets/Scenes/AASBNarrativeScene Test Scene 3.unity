@@ -2269,7 +2269,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: LIKE A DATE?
+  m_Text: LIKE A DATE? (INCREASE SLEEP METER)
 --- !u!222 &135142509
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18955,7 +18955,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PRETEND TO KNOW WHAT'S GOING ON
+  m_Text: PRETEND TO KNOW WHAT'S GOING ON (INCREASE SLEEP METER) (INCREASE RELATIONSHIP
+    WITH LANA)
 --- !u!222 &1022948368
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22376,7 +22377,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ASK ENGELBRECHT TO EXPLAIN
+  m_Text: ASK ENGELBRECHT TO EXPLAIN (DECREASE SLEEP METER AT END OF CHOICE)
 --- !u!222 &1164130165
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39589,7 +39590,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: NO THANKS, I WORK BETTER ALONE
+  m_Text: NO THANKS, I WORK BETTER ALONE (DECREASE SLEEP METER AT END OF CHOICE)
 --- !u!222 &2112402655
 CanvasRenderer:
   m_ObjectHideFlags: 0

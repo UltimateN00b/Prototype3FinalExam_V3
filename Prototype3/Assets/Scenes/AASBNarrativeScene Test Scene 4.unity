@@ -22214,10 +22214,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Fuck, pressure - that's a lot of fucking pressure. I just got here and I'm
-    already stressed-the-fuck-out like what if I fuck up the presentation and let
-    down the group? And I just started making friends! Oh man, and I can't fail! What
-    would mom think? She works way too hard just for me to flunk?
+  m_Text: 'Fuck, pressure - that''s a lot of fucking pressure. I just got here and
+    I''m already stressed-the-fuck-out like what if I fuck up the presentation and
+    let down the group? And I just started making friends! Oh man, and I can''t fail!
+    What would mom think? She works way too hard just for me to flunk?
+
+
+    (EVENT: DECREASE SLEEP METER)'
 --- !u!222 &1023646485
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25723,7 +25726,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: I DIDN'T THINK SOMEONE LIKE YOU WATCHED ANIME
+  m_Text: 'I DIDN''T THINK SOMEONE LIKE YOU WATCHED ANIME
+
+    (DECREASE SLEEP METER AT END OF CHOICE)'
 --- !u!222 &1121027547
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34056,7 +34061,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PICK JOEY
+  m_Text: PICK JOEY (INCREASE RELATIONSHIP WITH JOEY)
 --- !u!222 &1519409632
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36222,7 +36227,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: I ACTUALLY PREFER MANGA
+  m_Text: 'I ACTUALLY PREFER MANGA
+
+    (INCREASE SLEEP METER)
+
+    (INCREASE RELATIONSHIP WITH LANA)'
 --- !u!222 &1594748253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39000,7 +39009,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: KEEP QUIET
+  m_Text: 'KEEP QUIET (INCREASE RELATIONSHIP WITH JOEY)
+
+    (INCREASE SLEEP METER)'
 --- !u!222 &1741984591
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -43492,9 +43503,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'PRETEND TO KNOW WHAT JOEY IS TALKING ABOUT
+  m_Text: 'PRETEND TO KNOW WHAT JOEY IS TALKING ABOUT (DECREASE RELATIONSHIP WITH
+    JOEY)
 
-'
+    (DECREASE SLEEP METER)'
 --- !u!222 &1927372857
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45205,9 +45217,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'PICK LANA
-
-'
+  m_Text: PICK LANA (INCREASE RELATIONSHIP WITH LANA)
 --- !u!222 &2031986555
 CanvasRenderer:
   m_ObjectHideFlags: 0

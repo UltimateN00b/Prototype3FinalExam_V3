@@ -12805,7 +12805,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: ASK SOMEONE FOR DIRECTIONS TO THE LECTURE ROOM
+  m_Text: ASK SOMEONE FOR DIRECTIONS TO THE LECTURE ROOM (INCREASE SLEEP METER)
 --- !u!222 &666713621
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34557,7 +34557,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'WANDER THROUGH THE HALLS LOOKING FOR THE LECTURE ROOM YOURSELF '
+  m_Text: WANDER THROUGH THE HALLS LOOKING FOR THE LECTURE ROOM YOURSELF (DECREASE
+    SLEEP METER AT END OF CHOICE)
 --- !u!222 &1890636076
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35343,7 +35344,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: JUMP FOR JOY
+  m_Text: JUMP FOR JOY (INCREASE SLEEP METER BY 2 UNITS)
 --- !u!222 &1937504598
 CanvasRenderer:
   m_ObjectHideFlags: 0
